@@ -18,36 +18,10 @@ Os testes manuais foram realizados no Azure Boards, cobrindo as principais funci
 [👉 Clique aqui para acessar os Work Items](https://dev.azure.com/SEUNOME/SPRINT4-TESTING/_boards/board/t/SPRINT4-TESTING/Work%20Items)
 
 
-
-> Obs: o professor deve estar adicionado como membro do projeto para ter acesso.
-
-
-
----
-
-
-
-## 🤖 Parte B – Testes Automatizados
-(Será adicionado o link para o vídeo de execução e com Selenium IDE)
-
-
-
-🎥 **Vídeo de execução dos testes:** [colocar link do vídeo aqui]
-
-
-
----
-
-
-
 ### 👨‍💻 Equipe:
  
-
-Eduardo Osorio Filho – RM 550161
-
-Fábio Hideki Kamikihara – RM 550610
-
-Pedro Moura Barros – RM 550260
-
-Rodrigo Fernandes dos Santos – RM 98896
+- Eduardo Osorio Filho – RM 550161
+- Fábio Hideki Kamikihara – RM 550610
+- Pedro Moura Barros – RM 550260
+- Rodrigo Fernandes dos Santos – RM 98896
  
