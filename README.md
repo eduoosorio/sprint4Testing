@@ -16,9 +16,9 @@ Os testes manuais foram realizados no Azure Boards, cobrindo as principais funci
 
 📎 **Link de acesso aos testes manuais (Azure Boards) e do video:**
 
-[👉 Clique aqui para acessar](https://youtu.be/ert34pOf0jc)
+[👉 Clique aqui para acessar o vídeo](https://youtu.be/ert34pOf0jc)
 
-[👉 Clique aqui para acessar](https://dev.azure.com/RM550161/SPRINT4-TESTING/_workitems/recentlyupdated)
+[👉 Clique aqui para acessar Work Items](https://dev.azure.com/RM550161/SPRINT4-TESTING/_workitems/recentlyupdated)
 
 
 ### 👨‍💻 Equipe:
