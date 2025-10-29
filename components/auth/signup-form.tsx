@@ -16,6 +16,7 @@ export function SignupForm() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [fullName, setFullName] = useState("")
+  const [phone, setPhone] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -48,6 +49,7 @@ export function SignupForm() {
           : `${window.location.origin}/auth/callback`,
         data: {
           full_name: fullName,
+          phone: phone || null,
         },
       },
     })
@@ -91,6 +93,18 @@ export function SignupForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          disabled={loading}
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="phone">Telefone (opcional)</Label>
+        <Input
+          id="phone"
+          type="tel"
+          placeholder="(00) 00000-0000"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
           disabled={loading}
         />
       </div>
