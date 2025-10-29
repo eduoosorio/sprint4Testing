@@ -31,9 +31,21 @@ export function UserNav() {
       setUser(user)
 
       if (user) {
-        const { data: profileData } = await supabase.from("user_profiles").select("*").eq("id", user.id).single()
+        try {
+          const { data: profileData, error } = await supabase
+            .from("user_profiles")
+            .select("*")
+            .eq("id", user.id)
+            .single()
 
-        setProfile(profileData)
+          if (error) {
+            console.error("[v0] Error fetching profile:", error)
+          } else {
+            setProfile(profileData)
+          }
+        } catch (err) {
+          console.error("[v0] Failed to fetch profile:", err)
+        }
       }
 
       setLoading(false)
@@ -45,13 +57,21 @@ export function UserNav() {
       setUser(session?.user ?? null)
 
       if (session?.user) {
-        const { data: profileData } = await supabase
-          .from("user_profiles")
-          .select("*")
-          .eq("id", session.user.id)
-          .single()
+        try {
+          const { data: profileData, error } = await supabase
+            .from("user_profiles")
+            .select("*")
+            .eq("id", session.user.id)
+            .single()
 
-        setProfile(profileData)
+          if (error) {
+            console.error("[v0] Error fetching profile:", error)
+          } else {
+            setProfile(profileData)
+          }
+        } catch (err) {
+          console.error("[v0] Failed to fetch profile:", err)
+        }
       } else {
         setProfile(null)
       }

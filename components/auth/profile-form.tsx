@@ -54,6 +54,7 @@ export function ProfileForm({ userId, initialProfile }: ProfileFormProps) {
       setCity(data.localidade || "")
       setState(data.uf || "")
     } catch (err) {
+      console.error("[v0] Error fetching CEP:", err)
       setError("Erro ao buscar CEP. Tente novamente.")
     } finally {
       setLoadingCep(false)
@@ -75,28 +76,35 @@ export function ProfileForm({ userId, initialProfile }: ProfileFormProps) {
 
     const supabase = getSupabaseBrowserClient()
 
-    const { error: updateError } = await supabase.from("user_profiles").upsert({
-      id: userId,
-      full_name: fullName,
-      phone: phone || null,
-      zip_code: zipCode || null,
-      address: address || null,
-      city: city || null,
-      state: state || null,
-      updated_at: new Date().toISOString(),
-    })
+    try {
+      const { error: updateError } = await supabase.from("user_profiles").upsert({
+        id: userId,
+        full_name: fullName,
+        phone: phone || null,
+        zip_code: zipCode || null,
+        address: address || null,
+        city: city || null,
+        state: state || null,
+        updated_at: new Date().toISOString(),
+      })
 
-    if (updateError) {
-      setError(updateError.message)
+      if (updateError) {
+        console.error("[v0] Error updating profile:", updateError)
+        setError("Erro ao atualizar perfil. Verifique se as políticas do banco estão corretas.")
+        setLoading(false)
+        return
+      }
+
+      setSuccess("Perfil atualizado com sucesso!")
       setLoading(false)
-      return
+
+      // Refresh para atualizar os dados no header
+      router.refresh()
+    } catch (err) {
+      console.error("[v0] Failed to update profile:", err)
+      setError("Erro ao atualizar perfil. Tente novamente mais tarde.")
+      setLoading(false)
     }
-
-    setSuccess("Perfil atualizado com sucesso!")
-    setLoading(false)
-
-    // Refresh para atualizar os dados no header
-    router.refresh()
   }
 
   return (
